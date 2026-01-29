@@ -1,0 +1,7 @@
+pyspark
+pandas
+numpy
+sqlalchemy
+psycopg2-binary
+pymongo
+dbt-postgres
