@@ -1,0 +1,1 @@
+SELECT AVG("Quantity") FROM {{source("collect_silver", "ecommerce_data_silver")}}
