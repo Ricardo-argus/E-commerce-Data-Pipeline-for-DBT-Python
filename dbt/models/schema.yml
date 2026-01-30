@@ -2,20 +2,16 @@
 version: 2
 
 models:
-  - name: my_first_dbt_model
-    description: "A starter dbt model"
+  - name: meanticketpercustomer
+    description: "valor médio unitário por cliente"
     columns:
-      - name: id
-        description: "The primary key for this table"
-        data_tests:
+      - name: '"CustomerID"'
+        tests:
+          - not_null
           - unique
+
+      - name: mean_unitprice
+        description: "Preço médio por cliente"
+        tests:
           - not_null
 
-  - name: my_second_dbt_model
-    description: "A starter dbt model"
-    columns:
-      - name: id
-        description: "The primary key for this table"
-        data_tests:
-          - unique
-          - not_null
