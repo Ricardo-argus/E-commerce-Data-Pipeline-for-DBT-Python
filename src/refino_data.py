@@ -22,7 +22,7 @@ def executar_refino():
     connection_string = f"postgresql+psycopg2://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
     engine = create_engine(connection_string)
 
-    print(f"🔄 Iniciando refino: {TABLE_ORIGEM} -> {TABLE_DESTINO}...")
+    print(f"Iniciando refino: {TABLE_ORIGEM} -> {TABLE_DESTINO}...")
 
     # 2. Ler dados da tabela bronze
     df = pd.read_sql_table(TABLE_ORIGEM, engine)
@@ -45,7 +45,7 @@ def executar_refino():
     # 7. Salvar na tabela silver
     df.to_sql(TABLE_DESTINO, engine, if_exists="replace", index=False)
 
-    print(f"✅ Dados refinados com sucesso! Conexão encerrada com segurança.")
+    print(f"Dados refinados com sucesso! Conexão encerrada com segurança.")
 
 if __name__ == "__main__":
     executar_refino()
