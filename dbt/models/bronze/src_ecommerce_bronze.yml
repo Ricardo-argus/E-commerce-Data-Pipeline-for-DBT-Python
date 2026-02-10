@@ -1,0 +1,10 @@
+version: 2
+  
+sources:
+  - name: collect_bronze
+    database: python_projeto
+    schema: public
+    tables:
+      - name: ecommerce_data
+        description: "Tabela inicial com dados brutos de ecommerce_data csv"
+      

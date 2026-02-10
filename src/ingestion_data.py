@@ -1,19 +1,14 @@
 import pandas as pd
-import os
+from config import get_db_config
 from sqlalchemy import create_engine
-from dotenv import load_dotenv
+
 
 # Carrega as variáveis do arquivo .env
-load_dotenv()
+db_config = get_db_config()
 
 # Busca as variáveis de ambiente
-DB_USER = os.getenv("DB_USER")
-DB_PASSWORD = os.getenv("DB_PASSWORD")
-DB_HOST = os.getenv("DB_HOST")
-DB_PORT = os.getenv("DB_PORT")
-DB_NAME = os.getenv("DB_NAME")
 CSV_PATH = os.getenv("CSV_PATH")
-TABLE_NAME = "ecommerce_data" # Mantendo o nome que o dbt espera
+
 
 def carregar_csv_para_postgres():
     # Ler o CSV com encoding correto

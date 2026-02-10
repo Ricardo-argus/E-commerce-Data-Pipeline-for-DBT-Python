@@ -1,0 +1,10 @@
+version: 2
+  
+sources:
+  - name: collect_gold
+    database: python_projeto
+    schema: public
+    tables:
+      - name: ecommerce_data_gold
+        description: "Tabela final com dados limpos de ecommerce_data"
+      

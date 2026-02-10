@@ -1,20 +1,12 @@
 # create charts using data from database and from analysys , producing advanced informations about ABC Curves, Forward Curves and anything else
 import pandas as pd
-import os
+from config import get_db_config
 from sqlalchemy import create_engine, Numeric
 
 from dotenv import load_dotenv
 
 # Carrega as variáveis do arquivo .env localizado na raiz do projeto
-load_dotenv()
-
-# Configurações do banco PostgreSQL (agora protegidas)
-DB_USER = os.getenv("DB_USER")
-DB_PASSWORD = os.getenv("DB_PASSWORD")
-DB_HOST = os.getenv("DB_HOST")
-DB_PORT = os.getenv("DB_PORT")
-DB_NAME = os.getenv("DB_NAME")
-
+db_config = get_db_config()
 
 TABLE_ORIGEM = "ecommerce_data_gold"
 
