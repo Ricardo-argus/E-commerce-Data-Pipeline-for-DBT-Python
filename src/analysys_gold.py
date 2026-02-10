@@ -61,12 +61,32 @@ print(avg_quantity_byregion)
 
 #identify all boxes on DESCRIPTION, ALL ROSES and say what type of product has more quantity 
 
-qtd_box = df["Description"].str.contains("\\bbox(es)?\\b", case=False, na=False).sum()
+qtd_box = df["Description"].str.contains("\\bbox(es)?\\b", case=False, na=False)
 
-qtd_rose = df["Description"].str.contains("\\brose(s)?\\b", case=False, na=False).sum()
+country_countsbox = df[qtd_box].groupby("Country").size()
+print("Quantidade de Boxes por Pais:",country_countsbox)
 
-print("Quantidade de box/boxes:", qtd_box)
 
-print("Quantidade de rose/roses:", qtd_rose)
+france_boxes = (df[qtd_box & (df["Country"] == "France")]).shape[0]
+print("Quantidade de Boxes para França:",france_boxes)
+
+total_boxes = qtd_box.sum()
+
+#Identify all roses on Description, calculate by Country and after compare quantity with box
+
+qtd_rose = df["Description"].str.contains("\\brose(s)?\\b", case=False, na=False)
+
+country_countsroses = df[qtd_rose].groupby("Country").size()
+print("Quantidade de Roses por Pais:",country_countsroses)
+
+
+max_country = country_countsroses.idxmax()
+max_roses = country_countsroses.max()
+
+print(f"Pais com maior quantidade de Roses: {max_country} ({max_roses})")
+
+
+
+
 
 
