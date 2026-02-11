@@ -1,4 +1,4 @@
 SELECT "CustomerID", "mean_unitprice"
-FROM {{ ref('meanticketpercustomer') }}
+FROM {{ ref('meanvaluepercustomer') }}
 ORDER BY "mean_unitprice" DESC
 LIMIT 10

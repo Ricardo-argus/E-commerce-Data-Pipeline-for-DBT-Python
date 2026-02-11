@@ -2,7 +2,7 @@
 version: 2
 
 models:
-  - name: meanticketpercustomer
+  - name: meanvaluepercustomer
     description: "valor médio unitário por cliente"
     columns:
       - name: '"CustomerID"'
