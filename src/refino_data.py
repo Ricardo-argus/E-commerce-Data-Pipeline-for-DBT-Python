@@ -11,7 +11,10 @@ TABLE_DESTINO = "ecommerce_data_silver"
 
 def executar_refino():
     # 1. Conectar ao banco usando f-string e as variáveis de ambiente
-    connection_string = f"postgresql+psycopg2://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+    connection_string = (
+        f"postgresql+psycopg2://{db_config['DB_USER']}:{db_config['DB_PASSWORD']}"
+        f"@{db_config['DB_HOST']}:{db_config['DB_PORT']}/{db_config['DB_NAME']}"
+    )
     engine = create_engine(connection_string)
 
     print(f"Iniciando refino: {TABLE_ORIGEM} -> {TABLE_DESTINO}...")
