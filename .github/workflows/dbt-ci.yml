@@ -1,0 +1,48 @@
+name: DBT CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  dbt:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install dbt-postgres
+
+    - name: Configure DBT profile
+      run: |
+        mkdir -p ~/.dbt
+        echo "pythonproj:" > ~/.dbt/profiles.yml
+        echo "  target: dev" >> ~/.dbt/profiles.yml
+        echo "  outputs:" >> ~/.dbt/profiles.yml
+        echo "    dev:" >> ~/.dbt/profiles.yml
+        echo "      type: postgres" >> ~/.dbt/profiles.yml
+        echo "      host: ${{ secrets.DB_HOST }}" >> ~/.dbt/profiles.yml
+        echo "      user: ${{ secrets.DB_USER }}" >> ~/.dbt/profiles.yml
+        echo "      password: ${{ secrets.DB_PASSWORD }}" >> ~/.dbt/profiles.yml
+        echo "      port: 5432" >> ~/.dbt/profiles.yml
+        echo "      dbname: ${{ secrets.DB_NAME }}" >> ~/.dbt/profiles.yml
+        echo "      schema: public" >> ~/.dbt/profiles.yml
+        echo "      threads: 1" >> ~/.dbt/profiles.yml
+
+    - name: Run dbt models
+      run: dbt run --project-dir dbt
+
+    - name: Run dbt tests
+      run: dbt test --project-dir dbt
