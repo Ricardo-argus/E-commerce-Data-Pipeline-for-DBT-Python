@@ -59,23 +59,24 @@ WHERE "CustomerID" IS NULL
 
 # Rodar Modelos:
 
-    ```bash
+```bash
     dbt run
-    ```
+```
 
-    ```bash
+```bash
     dbt run -select avg_quantity 
-    ```
+```
 
 ### Criar Lineage DAG e Documentação:
 
-    ```bash
+```bash
     dbt docs generate
-    ```
+```
 
-    ```bash
+```bash
     dbt docs serve 
-    ```
+```
+
 *** Visualize a Lineage Graph (DAG) mostrando a relação entre os modelos criados abaixo:**
 
 ![DAG dos modelos dbt](DAG_image/LinearGraphdbt.png)
