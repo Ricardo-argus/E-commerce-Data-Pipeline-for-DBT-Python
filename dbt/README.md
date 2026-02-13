@@ -64,7 +64,7 @@ WHERE "CustomerID" IS NULL
 
 *** Visualize a Lineage Graph (DAG) mostrando a relação entre os modelos criados nesse link abaixo:**
 
-![DAG dos modelos dbt](data/LinearGraphdbt.png)
+![DAG dos modelos dbt](DAG_image/LinearGraphdbt.png)
 
 
 
