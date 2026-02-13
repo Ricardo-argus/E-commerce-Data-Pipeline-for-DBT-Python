@@ -3,15 +3,55 @@ version: 2
 
 models:
   - name: meanvaluepercustomer
-    description: "valor médio unitário por cliente"
+    description: "mean unit price by customer"
     columns:
       - name: '"CustomerID"'
         tests:
           - not_null
           - unique
 
-      - name: mean_unitprice
-        description: "Preço médio por cliente"
+      - name: count_null
+        description: "Count all null values presented in Column CustomerID"
+        tests:
+          - not_null
+
+      - name: paises_seedmodel
+        description: "Load all dataset paises in seed file"
+        tests:
+          - not_null
+
+      - name: avg_quantity
+        description: "Load all dataset paises in seed file"
+        tests:
+          - not_null
+
+      - name: null_prices
+        description: "identify null prices in unitprice columns and fill as 0 value using macro fill_null"
+        tests:
+          - not_null
+
+      - name: row_counts
+        description: "collect all null prices in table silver using macro"
+        tests:
+          - not_null
+
+      - name: totalquantity_per_country
+        description: "Collect Top 10 countries with most quantity of products sold"
+        tests:
+          - not_null
+        
+      - name: mean_ticket_per_region
+        description: "calculates mean ticket for each region in 2025 year"
+        tests:
+          - not_null
+
+      - name: most_sold_products_2024
+        description: "Collect most sold products in 2024 showing each product and quantity sold by product"
+        tests:
+          - not_null
+
+      - name: percentage_meanprice_month
+        description: "Create a view that calculate growth percentage of Unitprices average during months, Load each month, Differential and Average Price"
         tests:
           - not_null
 
