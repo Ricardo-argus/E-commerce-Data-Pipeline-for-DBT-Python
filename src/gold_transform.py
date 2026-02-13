@@ -37,9 +37,24 @@ def update_gold_table():
     random_days = np.random.randint(0, delta_days + 1, size=len(df))
     df["Date"] = [start + datetime.timedelta(days=int(d)) for d in random_days ]
 
+    # Add a column Source Media Channel that produces all social medias used to make each sale happens
 
-    df.to_sql("ecommerce_data_gold", engine, if_exists="replace", index=False,
-          dtype={"TotalValue": Numeric(10,2), "UnitPrice": Numeric(10,2)}
+    source_channel= ['Instagram', 'TikTok', 'Facebook', 'WhatsApp', 'Website', 'Retail store']
+
+    unique_invoices = df['InvoiceNo'].unique()
+    channel_map = dict(zip(unique_invoices, np.random.choice(source_channel, size=len(unique_invoices))))
+
+    df["source_sales_channel"] = df["InvoiceNo"].map(channel_map)
+
+    df.to_sql(
+        "ecommerce_data_gold", 
+        engine, 
+        if_exists="replace", 
+        index=False,
+        dtype={
+            "TotalValue": Numeric(10,2),
+            "UnitPrice": Numeric(10,2)
+        }
     )
     
 if __name__ == "__main__":

@@ -78,6 +78,20 @@ max_roses = country_countsroses.max()
 print(f"Pais com maior quantidade de Roses: {max_country} ({max_roses})")
 
 
+#Collect total_sales group by Region between year 2023 - 2024
+
+dates_sales = (df['Date'] >= '2023-01-01') & (df["Date"] <= '2024-12-31')
+df_filtered = df.loc[dates_sales]
+
+
+revenue_two_years= (
+    df_filtered.groupby('Region')['TotalValue']
+    .sum()
+    .sort_values(ascending = False)
+)
+
+print(f'Total_Sales by {revenue_two_years}: ')
+
 
 
 

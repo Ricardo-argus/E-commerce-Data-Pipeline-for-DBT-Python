@@ -37,4 +37,7 @@ sources:
 
           - name: Date
             description: "Date that Invoice were issued"
+
+          - name: source_sales_channel
+            description: "Source Channel of each Invoice that produces all sales"
           
