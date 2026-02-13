@@ -14,10 +14,12 @@ Toda a lógica de transformação está centralizada no dbt, permitindo versiona
 ##  Estrutura de Diretórios
 
 - **models/**
+  - **silver/** → modelos de dados brutos e criação de seed 
+    Exemplos: `count_null.sql`, `paises_seedmodel.sql`
   - **silver/** → modelos de limpeza e padronização  
-    Exemplos: `avg_quantity.sql`, `meanvaluepercustomer.sql`, `null_prices.sql`, `row_counts.sql`, `totalquantity_per_country.sql`, `schema.yml`
+    Exemplos: `avg_quantity.sql`, `meanvaluepercustomer.sql`, `null_prices.sql`, `row_counts.sql`, `totalquantity_per_country.sql`
   - **gold/** → modelos analíticos prontos para consumo  
-    Exemplos: `src_ecommerce_gold.yml`
+    Exemplos: `mean_ticket_per_region_2025.sql`, `percentage_meanprice_month.sql`, `most_sold_products_2024`
 - **tests/** → testes de qualidade customizados  
   Exemplos: `notnull_customers.sql`, `preco_maior_que_zero.sql`
 - **seeds/** → dados estáticos  
@@ -25,7 +27,9 @@ Toda a lógica de transformação está centralizada no dbt, permitindo versiona
 - **snapshots/** → controle de histórico  
   Exemplos: `clientes_snapshot.sql`
 - **macros/** → funções reutilizáveis
+  Exemplos: `calc_growth.sql`, `fill_null.sql`
 - **analyses/** → queries exploratórias
+  Exemplos: `salespercountry.sql`, `top_clientes.sql`
 - **dbt_project.yml** → arquivo principal de configuração
 
 ---
@@ -49,20 +53,25 @@ WHERE "CustomerID" IS NULL
 
 ### testes:
 
-    ```dbt test```
+    ```dbt test
+    ```
 
 ### Rodar Modelos:
 
-    ```dbt run```
-    ```dbt run -select avg_quantity ```
+    ```dbt run
+    ```
+    ```dbt run -select avg_quantity 
+    ```
 
 ### Criar Lineage DAG e Documentação:
 
-    ``` dbt docs generate```
-    ``` dbt docs serve ```
+    ``` dbt docs generate
+    ```
+    ``` dbt docs serve 
+    ```
 
 
-*** Visualize a Lineage Graph (DAG) mostrando a relação entre os modelos criados nesse link abaixo:**
+*** Visualize a Lineage Graph (DAG) mostrando a relação entre os modelos criados abaixo:**
 
 ![DAG dos modelos dbt](DAG_image/LinearGraphdbt.png)
 
