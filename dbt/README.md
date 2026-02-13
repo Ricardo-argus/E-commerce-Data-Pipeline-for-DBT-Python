@@ -51,24 +51,30 @@ WHERE "CustomerID" IS NULL
 
 ## Como rodar aplicacao, testes e  documentação 
 
-### testes:
+### Testes:
 
-    ```dbt test
-    ```
+    ```bash
+    dbt test
 
-### Rodar Modelos:
+    
 
-    ```dbt run
-    ```
-    ```dbt run -select avg_quantity 
-    ```
+# Rodar Modelos:
+
+    ```bash
+    dbt run
+    
+    ```bash
+    dbt run -select avg_quantity 
+    
 
 ### Criar Lineage DAG e Documentação:
 
-    ``` dbt docs generate
-    ```
-    ``` dbt docs serve 
-    ```
+    ```bash
+    dbt docs generate
+    
+    ```bash
+    dbt docs serve 
+```
 
 
 *** Visualize a Lineage Graph (DAG) mostrando a relação entre os modelos criados abaixo:**
