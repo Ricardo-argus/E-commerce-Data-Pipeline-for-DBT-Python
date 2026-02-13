@@ -1,0 +1,34 @@
+version: 2
+  
+sources:
+  - name: collect_bronze
+    database: python_projeto
+    schema: public
+    tables:
+      - name: ecommerce_data
+        description: "E-commerce Data table with Raw Data"
+        columns:
+          - name: InvoiceNo
+            description: "ID of each Invoice issued"
+
+          - name: StockCode
+            description: "ID of each Stock Item"
+
+          - name: Description
+            description: "Description of each item that belongs to that StockCode"
+          
+          - name: Quantity
+            description: "Quantity of items sold in that StockCode"
+
+          - name: InvoiceDate
+            description: "TimeStamp Date Time of each invoice"
+
+          - name: UnitPrice
+            description: "UnitPrice of each item"
+
+          - name: CustomerID
+            description: "ID of each customer"
+
+          - name: Country
+            description: "  Country of each sales happened"
+      

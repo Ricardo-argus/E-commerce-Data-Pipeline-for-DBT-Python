@@ -1,0 +1,31 @@
+version: 2
+
+sources:
+  - name: collect_silver 
+    database: python_projeto     
+    schema: public               
+    tables: 
+      - name: ecommerce_data_silver #
+        description: "E-commerce sales data table with tests and models reviewing raw data produced"
+        columns:
+          - name: InvoiceNo
+            description: "ID of each Invoice issued"
+
+          - name: StockCode
+            description: "ID of each Stock Item"
+
+          - name: Description
+            description: "Description of each item that belongs to that StockCode"
+          
+          - name: Quantity
+            description: "Quantity of items sold in that StockCode"
+
+          - name: UnitPrice
+            description: "UnitPrice of each item"
+
+          - name: CustomerID
+            description: "ID of each customer"
+
+          - name: Country
+            description: "  Country of each sales happened"
+          
