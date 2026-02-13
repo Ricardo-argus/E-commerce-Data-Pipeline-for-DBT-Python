@@ -55,3 +55,14 @@ models:
         tests:
           - not_null
 
+      - name: source_quantity_percentage
+        description: "Create a view that calculate percentage of quantity in each source channel"
+        tests:
+          - not_null
+
+      - name: source_revenue_2025
+        description: "Calculates Source Revenue in 2025, showing totalvalue by each source used"
+        tests:
+          - not_null
+      
+
